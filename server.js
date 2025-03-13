@@ -9,11 +9,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-// ✅ Enable CORS for frontend URL
+//  Enable CORS for frontend URL
 app.use(
   cors({
-    origin: "https://coupon-frontend-five.vercel.app", // Your Vercel frontend URL
+    origin: "https://coupon-frontend-five.vercel.app", // Vercel frontend URL
     credentials: true,
   })
 );
@@ -21,7 +20,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ Allow CORS for all routes
+//  Allow CORS for all routes
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
@@ -32,7 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ Routes
+// Routes
 app.use("/api/coupons", couponRoutes);
 
 const PORT = process.env.PORT || 5000;
